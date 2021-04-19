@@ -49,6 +49,7 @@ class Play extends Phaser.Scene {
 
         // initialize score
         this.p1Score = 0;
+        this.highScore = 0;
 
         // display score
         let scoreConfig = {
@@ -64,21 +65,29 @@ class Play extends Phaser.Scene {
             fixedWidth: 100
         }
         this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1Score, scoreConfig);
-/*
-        // display high score
-        this.highScore = 0;
-        if (this.highScore >= this.scoreLeft) {
-            this.highScore = this.add.text(borderUISize /*+ borderPadding*/, borderUISize + borderPadding*2, this.p1Score, scoreConfig);
-        }
-*/
+        this.scoreRight = this.add.text(640 - borderUISize - borderPadding - 100, borderUISize + borderPadding*2, this.highScore, scoreConfig);
+
+        // FIRE text
+        /*while(rocket.isFiring) {
+            this.add.text(game.config.width/2, borderUISize + borderPadding*2, 'FIRE', scoreConfig);
+        }*/
+        
         // GAME OVER flag
         this.gameOver = false;
 
-        // 60-second play clock
+        // play clock
         scoreConfig.fixedWidth = 0;
         this.clock = this.time.delayedCall(game.settings.gameTimer, () => {
             this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);        
             this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or ← for Menu', scoreConfig).setOrigin(0.5);
+            
+            // update high score
+            if (this.highScore <= this.p1Score) {
+                this.highScore = this.p1Score;
+                this.scoreRight.text = this.highScore;
+            }
+
+            //this.sound.stop('music');
             this.gameOver = true;
         }, null, this);
     }
