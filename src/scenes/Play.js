@@ -7,7 +7,8 @@ class Play extends Phaser.Scene {
         // load images/tile sprites
         this.load.image('canonball', './assets/canonball.png');
         this.load.image('pirateship', './assets/pirateship.png');
-        this.load.image('starfield', './assets/starfield.png');
+        this.load.image('ocean', './assets/oceanMenu.png');
+        this.load.image('waves', './assets/waves.png');
 
         // load spritesheet
         this.load.spritesheet('explosion', './assets/explosion.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
@@ -15,10 +16,11 @@ class Play extends Phaser.Scene {
 
     create() {
         // place tile sprite
-        this.starfield = this.add.tileSprite(0, 0, 640, 480, 'starfield').setOrigin(0, 0);
+        this.starfield = this.add.tileSprite(0, 0, 640, 480, 'ocean').setOrigin(0, 0);
+        this.waves = this.add.tileSprite(0, 0, 640, 480, 'waves').setOrigin(0,0)
         
-        // green UI background
-        this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2, 0x00FF00).setOrigin(0,0);
+        // blue UI background
+        this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2, 0x87e0fb).setOrigin(0,0);
         
         // add canonball (p1)
         this.p1Rocket = new Rocket(this, game.config.width/2, game.config.height - borderUISize - borderPadding, 'canonball').setOrigin(0.5, 0.5);
@@ -29,7 +31,7 @@ class Play extends Phaser.Scene {
         this.ship03 = new Spaceship(this, game.config.width, borderUISize*6 + borderPadding*4, 'pirateship', 0, 10).setOrigin(0,0);
 
         // white borders
-        this.add.rectangle(0, 0, game.config.width, borderUISize/*height*/, 0xFFFFFF).setOrigin(0, 0);    // top
+        this.add.rectangle(0, 0, game.config.width, borderUISize/*height*/, '0xFFFFFF').setOrigin(0, 0);    // top
         this.add.rectangle(0, game.config.height - borderUISize, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0, 0);    // bottom
         this.add.rectangle(0, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0, 0);   // left
         this.add.rectangle(game.config.width - borderUISize, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0, 0);    // right
@@ -55,7 +57,7 @@ class Play extends Phaser.Scene {
         let scoreConfig = {
             fontFamily: 'Courier',
             fontSize: '28px',
-            backgroundColor: '#F3B141',
+            backgroundColor: '#dd98f7',
             color: '#843605',
             align: 'right',
             padding: {
@@ -65,7 +67,7 @@ class Play extends Phaser.Scene {
             fixedWidth: 100
         }
         this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1Score, scoreConfig);
-        this.scoreRight = this.add.text(640 - borderUISize - borderPadding - 100, borderUISize + borderPadding*2, this.highScore, scoreConfig);
+        //this.scoreRight = this.add.text(640 - borderUISize - borderPadding - 100, borderUISize + borderPadding*2, this.highScore, scoreConfig);
 
         // FIRE text
         /*while(rocket.isFiring) {
@@ -77,7 +79,7 @@ class Play extends Phaser.Scene {
         
         // play clock
         scoreConfig.fixedWidth = 0;
-        //this.timeRemaining = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1Score, scoreConfig);
+        this.timeRemaining = this.add.text(640 - borderUISize - borderPadding - 100, borderUISize + borderPadding*2, this.gameTimer - Math.floor(time/1000), scoreConfig);
         this.clock = this.time.delayedCall(game.settings.gameTimer, () => {
             this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);        
             this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or ← for Menu', scoreConfig).setOrigin(0.5);
@@ -89,7 +91,6 @@ class Play extends Phaser.Scene {
                 this.hscore = this.highScore;
             }
 
-            //this.sound.stop('music');
             this.gameOver = true;
         }, null, this);
     }
@@ -103,7 +104,7 @@ class Play extends Phaser.Scene {
             this.scene.start("menuScene");
         }
 
-        this.starfield.tilePositionX -= 4;  // update tile sprite
+        this.waves.tilePositionX -= 4;  // update tile sprite
         
         if(!this.gameOver) {
             this.p1Rocket.update();             // update p1

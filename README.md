@@ -1,16 +1,19 @@
 
-started at 8:30 pm
+3 hrs
+started 10:15am
 
 
 Modifications:
 
 Allow the player to control the Rocket after it's fired (5)
-Add your own (copyright-free) background music to the Play scene (5) - music doesnt end at gameover
-Track a high score that persists across scenes and display it in the UI (5) - resets each game
+Add your own (copyright-free) background music to the Play scene (5) 
+Redesign the game's artwork, UI, and sound to change its theme/aesthetic (to something other than sci-fi) (60) - pirate theme
 
-Total: 15 points
+still need explosion
+
+Total: 70 points
 
 Music Credits:
-"Space Fighter Loop" Kevin MacLeod (incompetech.com)
-Licensed under Creative Commons: By Attribution 4.0 License
-http://creativecommons.org/licenses/by/4.0/
+"Pirate Theme" Znevs (opengameart.org)
+Licensed under Creative Commons: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
+https://creativecommons.org/publicdomain/zero/1.0/
