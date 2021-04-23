@@ -16,12 +16,14 @@ class Play extends Phaser.Scene {
     }
 
     create() {
+        console.log(game.settings.gameTimer);
+        
         // place tile sprite
         this.starfield = this.add.tileSprite(0, 0, 640, 480, 'ocean').setOrigin(0, 0);
         this.waves = this.add.tileSprite(0, 0, 640, 480, 'waves').setOrigin(0,0)
         
-        // sand UI background
-        this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2, 0xe6d7a8).setOrigin(0,0);
+        // UI background
+        this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2, 0xf3f8e2).setOrigin(0,0);
         
         // add canonball (p1)
         this.p1Rocket = new Rocket(this, game.config.width/2, game.config.height - borderUISize - borderPadding, 'canonball').setOrigin(0.5, 0.5);
@@ -60,7 +62,7 @@ class Play extends Phaser.Scene {
         let scoreConfig = {
             fontFamily: 'Courier',
             fontSize: '28px',
-            backgroundColor: '#dd98f7',
+            backgroundColor: '#f1cae7',
             color: '#843605',
             align: 'right',
             padding: {

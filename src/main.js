@@ -1,3 +1,5 @@
+// Project info included in README.md
+
 let config = {
     type: Phaser.AUTO,
     width: 640,
