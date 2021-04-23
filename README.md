@@ -16,3 +16,6 @@ Music Credits:
 "Pirate Theme" Znevs (opengameart.org)
 Licensed under Creative Commons: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
 https://creativecommons.org/publicdomain/zero/1.0/
+
+Help Received:
+Colin O'Rourke - timer
