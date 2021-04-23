@@ -1,9 +1,7 @@
 Name: Aria Altenburg
 Title: Pirate Patrol
 Date: 4/22/21
-Time Spent:
-9hrs
-7:30
+Time Spent: 11.5 hours
 
 Modifications:
 Allow the player to control the Rocket after it's fired (5)
