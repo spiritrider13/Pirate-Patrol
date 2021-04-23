@@ -12,12 +12,10 @@ class Play extends Phaser.Scene {
         this.load.image('shark', './assets/shark.png');
 
         // load spritesheet
-        this.load.spritesheet('explosion', './assets/explosion.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
+        this.load.spritesheet('explosion', './assets/explosion.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 8});
     }
 
     create() {
-        console.log(game.settings.gameTimer);
-        
         // place tile sprite
         this.starfield = this.add.tileSprite(0, 0, 640, 480, 'ocean').setOrigin(0, 0);
         this.waves = this.add.tileSprite(0, 0, 640, 480, 'waves').setOrigin(0,0)
@@ -51,7 +49,7 @@ class Play extends Phaser.Scene {
         // animation config
         this.anims.create({
             key: 'explode',
-            frames: this.anims.generateFrameNumbers('explosion', { start: 0, end: 9, first: 0}),
+            frames: this.anims.generateFrameNumbers('explosion', { start: 0, end: 8, first: 0}),
             framerate: 30
         });
 
