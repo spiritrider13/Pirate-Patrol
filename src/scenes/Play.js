@@ -95,10 +95,6 @@ class Play extends Phaser.Scene {
             this.scene.start("menuScene");
         }
 
-        // timer
-        this.timeLeft = this.game.settings.gameTimer/1000 - Math.floor(time/1000)
-        this.timeRemaining.text = this.timeLeft;
-
         this.waves.tilePositionX -= 4;  // update tile sprite
         
         if(!this.gameOver) {
@@ -109,9 +105,9 @@ class Play extends Phaser.Scene {
             this.shark.update();
             // timer
             this.timeLeft = this.game.settings.gameTimer/1000 - Math.floor(time/1000)
-            //while(this.timeLeft >= 0) {
-                //this.timeRemaining.text = this.timeLeft;
-            //}
+            if(this.timeLeft >= 0) {
+                this.timeRemaining.text = this.timeLeft;
+            }
         }
 
         //check collisions
